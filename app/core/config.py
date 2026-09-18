@@ -30,6 +30,7 @@ class Settings(BaseSettings):
         "http://localhost:5173,http://localhost:8080,"
         "https://abacubiertas-erp-frontend.vercel.app"
     )
+    cors_origin_regex: str = r"https://.+\.vercel\.app"
 
     admin_email: str = "admin_user@abacubiertas.com"
     admin_password: str = "B7eRc5qsqKFnDU5HZubRoU1L"
