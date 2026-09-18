@@ -1,4 +1,4 @@
-from pydantic import model_validator
+from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 DEV_JWT_SECRET = "change-me-in-production-use-a-random-32-bytes-secret"
@@ -30,6 +30,15 @@ class Settings(BaseSettings):
 
     admin_email: str = "admin_user@abacubiertas.com"
     admin_password: str = "B7eRc5qsqKFnDU5HZubRoU1L"
+
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def _normalizar_database_url(cls, value: str) -> str:
+        if value.startswith("postgres://"):
+            return value.replace("postgres://", "postgresql+psycopg2://", 1)
+        if value.startswith("postgresql://"):
+            return value.replace("postgresql://", "postgresql+psycopg2://", 1)
+        return value
 
     @property
     def cors_origins_list(self) -> list[str]:

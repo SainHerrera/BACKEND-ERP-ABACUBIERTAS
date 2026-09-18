@@ -1,0 +1,10 @@
+.git
+__pycache__
+*.pyc
+.env
+tests
+requirements-dev.txt
+docker-compose.yml
+database.sql
+backend.md
+pytest.ini
