@@ -26,7 +26,10 @@ class Settings(BaseSettings):
     refresh_token_expire_days: int = 7
 
     allow_registration: bool = True
-    cors_origins: str = "http://localhost:5173,http://localhost:8080"
+    cors_origins: str = (
+        "http://localhost:5173,http://localhost:8080,"
+        "https://abacubiertas-erp-frontend.vercel.app"
+    )
 
     admin_email: str = "admin_user@abacubiertas.com"
     admin_password: str = "B7eRc5qsqKFnDU5HZubRoU1L"
